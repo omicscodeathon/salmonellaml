@@ -26,6 +26,6 @@ Predicting the Source of Salmonella Enterica from Whole Genome Sequencing Data U
 
 ## Discussion
  
-- [Team](#Team)
+ ## Team
 - Bonface Onyango
 - Brenda Muthoni
