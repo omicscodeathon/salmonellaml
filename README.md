@@ -20,7 +20,7 @@ Predicting the Source of Salmonella Enterica from Whole Genome Sequencing Data U
 
 ## Methods
 
-![workflow]()
+![workflow](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/workflow.png)
 
 ## Results
 
