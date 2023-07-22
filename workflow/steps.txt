@@ -1,8 +1,12 @@
-Steps: [Convert the steps into workflow diagram (include tools for each step) and update README.md]
+Steps: [Convert the steps into a workflow diagram (include tools for each step) and update README.md]
 . Pull down the reads
-.
-.
-.
+. Download metadata with biosample IDs from NCBI pathogen isolate browser -Manually
+. Assigning the sources of Salmonella into categories (poultry, bovine, swine, etc) 
+. Extracting biosample IDS into bisample.txt - Jupyter notebook
+. Extract SRA ID's from the biosample file and save them to the accesions.txt file- Entrez-Direct
+. Download the SRA sequences of the accessions in the previous step - download.sh
+. Quality Control -FASTQC
+# 
 .
 .
 .
