@@ -19,4 +19,4 @@ echo $i/$i".fastq.gz"
 bwa mem -t 4 $REF $input_dir/$i/$i".fastq.gz" | $samtools view -Sb - > $output_dir/$i.bam
 
 done
-    echo Mapping finished at$(date)
+  echo Mapping finished at $(date)
