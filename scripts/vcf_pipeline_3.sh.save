@@ -1,0 +1,15 @@
+#!/bin/bash
+##*************************************************************************##
+##                      Step1. BWA mapping ## 
+##*************************************************************************##
+input_list="../raw_data" 
+echo "Indexing the reference genome"
+bwa index ../data/salmonella_ref.fasta
+##*************************************************************************##
+##                      Step1. BWA mapping ##for sample in $(ls $input_lis
+##*************************************************************************##do
+  echo "mapping start at $(date)"
+#    $bwa mem -t 4 -R $Tag $REF $input_dir/$sample*R1* $input_dir/$sample*R2* | $samtools view -Sb - > 
+#$output_dir/$sample.$
+    echo Mapping finished at  
+done

@@ -35,7 +35,7 @@ echo "**samtools sort finished at $(date)**"
 ##*************************************************************************##
 ##                 Step3. calling variants using bcftools                  ##          
 ##*************************************************************************##
-echo "**bcftools calling start at $(date)**"
+echo "**bcftools calling started at $(date)**"
 bcftools mpileup -f $REF $output_dir/$i.sorted.bam | bcftools call -vm -Oz > $variants_out/$i.vcf.gz
 echo "**bcftools calling finished at $(date)**"
 
