@@ -117,6 +117,6 @@ do
  
 done
 
-## SNP file list
+## SNP file list output
 ls ../data/*.snp > ../data/snp.lists
 
