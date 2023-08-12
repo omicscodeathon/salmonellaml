@@ -60,7 +60,7 @@
 ##*************************************************************************##
 ##  Step 1: Indexing the Reference                                         ## 
 ##*************************************************************************##
-input_dir="../data/trimmed_data" 
+input_dir=$1
 REF="../data/salmonella_ref.fasta"
 mkdir ../data/variants_out/01filter
 variants_out="../data/variants_out"
@@ -75,13 +75,13 @@ output_dir="../data/output_dir"
 echo "mapping start at $(date)" 
 
 # Loop through the paired-end read files
-for i in  $(ls $input_dir/*_1_paired.fastq.gz);
+for i in  $(ls $input_dir/*_1_trimmed.fastq.gz);
 do
   foward=$i
-  reverse="${i%_1_paired.fastq.gz}_2_paired.fastq.gz"
+  reverse="${i%_1_trimmed.fastq.gz}_2_trimmed.fastq.gz"
   base1=$(basename "$i")
-  out="${base1%_1_paired.fastq.gz}"
-
+  out="${base1%_1_trimmed.fastq.gz}"
+  echo $out
   # Perform read mapping using BWA-MEM and output to SAM file
   bwa mem -t 4 $REF "$foward" "$reverse" > "$output_dir/$out.sam"
 
