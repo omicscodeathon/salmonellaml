@@ -52,45 +52,110 @@
 
 # ### extracting GT
 # bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' $variants_out/01filter/$i.filter.snps.recode.vcf -o $variants_out/01filter/$i.filter.snps.extract.txt
-# bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' $variants_out/01filter/$i.filter.indels.recode.vcf -o $variants_out/01filter/$i.filter.indels.extract.txt
-#!/bin/bash
+# # bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' $variants_out/01filter/$i.filter.indels.recode.vcf -o $variants_out/01filter/$i.filter.indels.extract.txt
+# #!/bin/bash
+
+# #!/bin/bash
+
+# ##*************************************************************************##
+# ##  Step 1: Indexing the Reference                                         ## 
+# ##*************************************************************************##
+# input_dir="../data/trimmed_data" 
+# REF="../data/salmonella_ref.fasta"
+# mkdir ../data/variants_out/01filter
+# variants_out="../data/variants_out"
+# echo "Indexing the reference genome"
+# mkdir ../data/output_dir/
+# output_dir="../data/output_dir" 
+# bwa index ../data/salmonella_ref.fasta
+
+# ##*************************************************************************##
+# ##  Step 2: Mapping  to the Refeence 
+# ##*************************************************************************##
+# echo "mapping start at $(date)" 
+
+# # Loop through the paired-end read files
+# for i in  $(ls $input_dir/*_1_trimmed.fastq.gz);
+# do
+# echo $i
+#   foward=$i
+#   reverse="${i%_1_trimmed_fastq.gz}_2_trimmed.fastq.gz"
+#   base1=$(basename "$i")
+#   out="${base1%_1_trimmed.fastq.gz}"
+
+#   # Perform read mapping using BWA-MEM and output to SAM file
+#   bwa mem -t 4 $REF "$foward" "$reverse" > "$output_dir/$out.sam"
+
+#   # Convert SAM to BAM
+#   samtools view -Sb "$output_dir/$out.sam" > "$output_dir/$out.bam"
+  
+#   # Sort the BAM file using samtools
+#   echo "**samtools sort start at $(date)**"
+#   samtools sort "$output_dir/$out.bam" -O bam -o "$output_dir/$out.sorted.bam"
+  
+#   # Remove the intermediate SAM and unsorted BAM files
+# #   rm -f "$output_dir/$out.sam" "$output_dir/$out.bam"
+  
+#   # Index the sorted BAM file
+#   samtools index "$output_dir/$out.sorted.bam"
+#   echo "**samtools sort finished at $(date)**"
+  
+#   # Call variants using bcftools
+#   echo "**bcftools calling started at $(date)**"
+#   bcftools mpileup -f $REF "$output_dir/$out.sorted.bam" | bcftools call -vm -Oz > "$variants_out/$out.vcf.gz"
+#   echo "**bcftools calling finished at $(date)**"
+
+#   # SNP filtering
+#   vcftools --gzvcf "$variants_out/$out.vcf.gz" --minDP 4 --max-missing 0.2 --minQ 30 --recode --recode-INFO-all --out "$variants_out/01filter/$out.filter"
+#   vcftools --gzvcf "$variants_out/01filter/$out.filter.recode.vcf" --remove-indels --recode --recode-INFO-all --out "$variants_out/01filter/$out.filter.snps"
+#   vcftools --gzvcf "$variants_out/01filter/$out.filter.recode.vcf" --keep-only-indels --recode --recode-INFO-all --out "$variants_out/01filter/$out.filter.indels"
+  
+#   # Extract GT (Genotype) information
+#   bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' "$variants_out/01filter/$out.filter.snps.recode.vcf" -o "$variants_out/01filter/$out.filter.snps.extract.txt"
+#   bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' "$variants_out/01filter/$out.filter.indels.recode.vcf" -o "$variants_out/01filter/$out.filter.indels.extract.txt"
+
+#   cut -d " " -f 2,3,4 "$variants_out/01filter/$out.filter.snps.extract.txt" > "../data/$out.snp"
+ 
+# done
+
+# ## SNP file list output
+# ls ../data/*.snp > ../data/snp.lists
 
 #!/bin/bash
 
 ##*************************************************************************##
 ##  Step 1: Indexing the Reference                                         ## 
-##*************************************************************************##
-input_dir=$1
+##*************************************************************************## 
 REF="../data/salmonella_ref.fasta"
-mkdir ../data/variants_out/01filter
+mkdir -p ../data/variants_out/01filter
 variants_out="../data/variants_out"
 echo "Indexing the reference genome"
-mkdir ../data/output_dir/
+mkdir -p ../data/output_dir/
 output_dir="../data/output_dir" 
-#bwa index ../data/salmonella_ref.fasta
+# Uncomment the following line if indexing is needed
+# bwa index "$REF"
 
 ##*************************************************************************##
-##  Step 2: Mapping  to the Refeence 
+##  Step 2: Mapping  to the Reference 
 ##*************************************************************************##
 echo "mapping start at $(date)" 
 
 # Loop through the paired-end read files
-for i in  $(ls $input_dir/*_1_trimmed.fastq.gz);
+for forward in "$1"/*_1_trimmed.fastq.gz;
 do
-  foward=$i
-  reverse="${i%_1_trimmed.fastq.gz}_2_trimmed.fastq.gz"
-  base1=$(basename "$i")
+  reverse="${forward%_1_trimmed.fastq.gz}_2_trimmed.fastq.gz"
+  base1=$(basename "$forward")
   out="${base1%_1_trimmed.fastq.gz}"
-  echo $out
+
   # Perform read mapping using BWA-MEM and output to SAM file
-  bwa mem -t 4 $REF "$foward" "$reverse" > "$output_dir/$out.sam"
+  bwa mem -t 4 "$REF" "$forward" "$reverse" > "$output_dir/$out.sam"
 
   # Convert SAM to BAM
   samtools view -Sb "$output_dir/$out.sam" > "$output_dir/$out.bam"
   
   # Sort the BAM file using samtools
   echo "**samtools sort start at $(date)**"
-  samtools sort "$output_dir/$out.bam" -O bam -o "$output_dir/$out.sorted.bam"
+  samtools sort "$output_dir/$out.bam" -o "$output_dir/$out.sorted.bam"
   
   # Remove the intermediate SAM and unsorted BAM files
   rm -f "$output_dir/$out.sam" "$output_dir/$out.bam"
@@ -101,7 +166,7 @@ do
   
   # Call variants using bcftools
   echo "**bcftools calling started at $(date)**"
-  bcftools mpileup -f $REF "$output_dir/$out.sorted.bam" | bcftools call -vm -Oz > "$variants_out/$out.vcf.gz"
+  bcftools mpileup -f "$REF" "$output_dir/$out.sorted.bam" | bcftools call -vm -Oz > "$variants_out/$out.vcf.gz"
   echo "**bcftools calling finished at $(date)**"
 
   # SNP filtering
@@ -114,9 +179,7 @@ do
   bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' "$variants_out/01filter/$out.filter.indels.recode.vcf" -o "$variants_out/01filter/$out.filter.indels.extract.txt"
 
   cut -d " " -f 2,3,4 "$variants_out/01filter/$out.filter.snps.extract.txt" > "../data/$out.snp"
- 
 done
 
 ## SNP file list output
 ls ../data/*.snp > ../data/snp.lists
-
