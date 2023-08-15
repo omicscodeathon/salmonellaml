@@ -21,5 +21,11 @@ nextflow run pipeline --folder_path /path/to/tsv_directory
 nextflow run pipeline/ --folder_path data/biosample_data/kenya/
 
 ## Variant calling 
-
+The varian calling script takes in the path of trimmed data
+  - Index the refrence genome
+  - Do the Alignment of each read to reference genome and outpu bam fle foe next steps
+  - Variant calling 
+  - Ouput snp files for each sample for the next satage of generating a dataframe of genomic position in the columns and samples in rows
+## Example usage
+bash vcf_pipeline_5.sh path/to/trimmed_data 
 
