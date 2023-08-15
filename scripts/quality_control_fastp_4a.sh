@@ -9,7 +9,7 @@
 #     fastp -i ${i} -I ${input}/${name}_2.fastq.gz -o output/${name}_1_trimmed.fastq.gz -O output/${name}_2_trimmed.fastq.gz
 # done
 
-input="../work/f0/eaf872d8c06c8f54a4dad2aa570fe3"
+input="$1"
 output_dir="../data/trimmed_data"
 
 mkdir ../data/trimmed_data  # Create output directory if it doesn't exist
