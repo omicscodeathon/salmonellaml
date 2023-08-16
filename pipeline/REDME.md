@@ -5,6 +5,10 @@ Repository Structure
 - modules: Contains Nextflow-defined processes for the pipeline.
 - main: Contains the main Nextflow script that orchestrates the workflow
 -configuration: contains configuratio set up for the pipeline
+# Setting up environment
+The requirements for this project are in the requirements file.
+conda env create --name <environment_name> --file <input_file.yml>
+conda env create --salmonellaml --file ../requirements.yml
 
 ## Pipeline Steps
  A) Download- Quality Control
