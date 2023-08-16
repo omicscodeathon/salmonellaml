@@ -135,6 +135,7 @@ output_dir="../data/output_dir"
 # Uncomment the following line if indexing is needed
 # bwa index "$REF"
 
+
 ##*************************************************************************##
 ##  Step 2: Mapping  to the Reference 
 ##*************************************************************************##
@@ -146,6 +147,12 @@ do
   reverse="${forward%_1_trimmed.fastq.gz}_2_trimmed.fastq.gz"
   base1=$(basename "$forward")
   out="${base1%_1_trimmed.fastq.gz}"
+   # Check if the corresponding .snp file exists and is not empty
+  if [ -f "../data/$out.snp" ] && [ -s "../data/$out.snp" ]; then
+    echo "Skipping $out, corresponding .snp file exists and is not empty."
+    continue
+  fi
+
 
   # Perform read mapping using BWA-MEM and output to SAM file
   bwa mem -t 4 "$REF" "$forward" "$reverse" > "$output_dir/$out.sam"
