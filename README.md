@@ -22,7 +22,7 @@ Salmonella enterica is a pathogen that can be transmitted from animals to humans
 
 ## Methods
 
-![workflow](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/workflow.png)
+![workflow](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/workflow_2.png)
 
 ## Results
 ![results](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/CNN_Training_Val_Evaluation.png)
