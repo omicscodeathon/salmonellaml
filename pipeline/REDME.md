@@ -16,13 +16,16 @@ conda env create --salmonellaml --file ../requirements.yml
 - 2. Retrieve SRA Accessions: The biosample IDs are used to retrieve corresponding SRA accessions using the EXTRACT_SRA_IDS module, which utilizes an estractsra.sh script.
 - 3. Download SRA Data: The SRA accessions are used to download corresponding SRA data using the DOWNLOAD module, which employs a download.sh script.
 - 4. Quality Control: The downloaded SRA data is subjected to quality control using Fastp in the QUALITY_CONTROL module.
+## Quality control
+run-2023-10-07-salmonellaml
 
 ## Run the pipeline using the Nextflow script:
 
 nextflow run pipeline --folder_path /path/to/tsv_directory
 
 ## Example usage
-nextflow run pipeline/ --folder_path data/biosample_data/kenya/
+Run the data for the folowing
+nextflow run pipeline/ --folder_path accessions/kenya/
 
 ## Variant calling 
 The varian calling script takes in the path of trimmed data
@@ -31,5 +34,4 @@ The varian calling script takes in the path of trimmed data
   - Variant calling 
   - Ouput snp files for each sample for the next satage of generating a dataframe of genomic position in the columns and samples in rows
 ## Example usage
-bash vcf_pipeline_5.sh path/to/trimmed_data 
-
+bash vcf_pipeline_5.sh ../data/trimmed_data
