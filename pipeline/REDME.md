@@ -30,7 +30,7 @@ Above steps can be achieved
 nextflow run pipeline --folder_path /path/to/tsv_directory
 
 ### Example usage
-Run the data for the folowing
+The following code downloads and preprocess data for Kenya. The code will ouput foward and recerse sequence data that can be used to call  variants using  another script. 
 
 ```
 nextflow run pipeline/ --folder_path accessions/kenya/
