@@ -34,8 +34,8 @@ Salmonella enterica is a pathogen that can be transmitted from animals to humans
 
 
 ## Reproducibility
-The reproducibility documentation of this work can be found here 
-![reproducibility](https://github.com/omicscodeathon/salmonellaml/blob/main/pipeline/REDME.md)
+The reproducibility documentation of this project can be found here 
+![link](https://github.com/omicscodeathon/salmonellaml/blob/main/pipeline/REDME.md)
  
  ## Team
 - Bonface Onyango
