@@ -14,7 +14,9 @@ conda env create --salmonellaml --file ../requirements.yml
 ## Data Download and prepcessing
 - Download reference sequence
 
+```
 wget -O ./data/salmonellaref.fasta https://www.ncbi.nlm.nih.gov/nuccore/NZ_JAPQLD010000001.1
+```
 
 - Process tha metadata tables for each country from the accessions folder. The data was downloaded by country and deleteting internedfiate files to free memmory
  
