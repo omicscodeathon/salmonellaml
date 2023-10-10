@@ -2,14 +2,16 @@
 This repository contains a reproducibility steps for Salmonella enterica source attribution. The pipeline processes input biosample data to extract biosample IDs, retrieve corresponding SRA accessions, download SRA data, and perform quality control using Fastp.The downloaded data is followed by running the notebooks in this oeder; 1) preprocessing_01.ipynb2) dimentionality_reduction_2_updated.ipynb 3) Hyperparameter_Tuning_machine_learning_3.ipynb and 4) processing_test_dataset_4.ipynb
 
 # Setting up environment
-The requirements for this project are in the requirements file.
+The package requirements for this project are in the requirements file.
 
 conda env create --name <environment_name> --file <input_file.yml>
 example usage
 ```
 conda env create --salmonellaml --file ../requirements.yml
 ```
-
+```
+conda activate salmonellaml
+```
 # Reproducibility  Steps
 ## Data Download and prepcessing
 - Download reference sequence
