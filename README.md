@@ -1,6 +1,5 @@
 # salmonellaml
-Predicting the Source of Salmonella Enterica from Whole Genome Sequencing Data Using Machine Learning
-
+Attributing the Source of Salmonella Enterica: A Machine Learning Approach to Understanding Pathogen Surveillance in Africa
 ## Table of Contents
 - [Introduction](#Introduction)
 - [Objectives](#Objectives)
@@ -18,7 +17,7 @@ Salmonella enterica is a pathogen that can be transmitted from animals to humans
 
 ## Objectives
 1. Develop machine learning models to predict the source of Salmonella Enterica  based on whole genome sequencing data
-2. Identify genetic determinants associated with source attributions.
+2. Identify SNPs determinants associated with source attributions.
 
 ## Methods
 
