@@ -74,11 +74,11 @@ do
   bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' "$variants_out/01filter/$out.filter.snps.recode.vcf" -o "$variants_out/01filter/$out.filter.snps.extract.txt"
   bcftools query -f '%CHROM %POS %REF %ALT [%TGT]\n' "$variants_out/01filter/$out.filter.indels.recode.vcf" -o "$variants_out/01filter/$out.filter.indels.extract.txt"
 
-  cut -d " " -f 2,3,4 "$variants_out/01filter/$out.filter.snps.extract.txt" > "../data/$country/$out.snp"
+  cut -d " " -f 2,3,4 "$variants_out/01filter/$out.filter.snps.extract.txt" > "../data/$country_name/$out.snp"
 done
 
 ## SNP file list output to country snp file
-ls ../data/"$country"/*.snp > ../data/"$country"_snp.lists
+ls ../data/"$country_name"/*.snp > ../data/"$country_name"_snp.lists
 # remove the files in run-salmonella pipeline to process the next country
 rm -r $directory
 # remove the files in the work to process the next country
