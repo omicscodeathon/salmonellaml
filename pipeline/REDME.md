@@ -51,7 +51,7 @@ The varian calling script takes in the path of trimmed data
 bash vcf_pipeline_5.sh ../data/trimmed_data
 
 ### Master script
-The master script (scripts_all.sh) contains the multiple scipts that can be executed to download the data and perform variant calling for a given country . The command below shows how to process data for Kenya. This will output the snps data in the name the folder bearing the name provided in the script
+The master script (scripts_all.sh) contains the multiple scipts that can be executed to download the data and perform variant calling for a given country . The command below shows how to process data for Kenya. This will output the snps data in the folder bearing the name provided in the script
 ```
 bash all_scripts.sh ../accessions/kenya/
 ```
@@ -61,4 +61,3 @@ A) preprocessing of the SNP data (preprocessing_01.ipynb). This notebook was use
 A) Dimentionality Reduction (dimentionality_reduction_2_updated.ipynb): SNPs data produces hundresd od thousands of SNPs. This notebook was used to extract top 100 SNPs using ChiSquare approach, identiying the correlation among the SNPs and removing atleast one pair of highly correlted SNPs resulting to  49 features (SNPs) 
 
 C) Machine learning (Hyperparameter_Tuning_machine_learning_3.ipynb): This script was used for tuning the parameters for the machine learning models, training the dataset and evaluating the model perfoemances
-
