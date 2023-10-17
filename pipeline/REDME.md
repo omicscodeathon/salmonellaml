@@ -13,7 +13,7 @@ conda env create --salmonellaml --file ../requirements.yml
 conda activate salmonellaml
 ```
 # Reproducibility  Steps
-[ Illustration of Scripts Data Input and Output from Data Acquistion to table generation](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/preprocesing_illustration_scripts_excecution.png)
+![ Illustration of Scripts Data Input and Output from Data Acquistion to table generation](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/preprocesing_illustration_scripts_excecution.png)
 
 ## Data Download and prepcessing
 - Download reference sequence
