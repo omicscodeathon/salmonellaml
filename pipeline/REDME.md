@@ -48,7 +48,10 @@ The varian calling script takes in the path of trimmed data
 bash vcf_pipeline_5.sh ../data/trimmed_data
 
 ### Master script
-The master script contains the multiple scipts that can be executed to download the data and perform variant calling for a given country . The command below shows how to process data for Kenya
+The master script (scripts_all.sh) contains the multiple scipts that can be executed to download the data and perform variant calling for a given country . The command below shows how to process data for Kenya. This will output the snps data in the name the folder bearing the name provided in the script
+```
+bash all_scripts.sh ../accessions/kenya/
+```
 ## Jupyter Notebooks
 A) preprocessing of the SNP data (preprocessing_01.ipynb). This notebook was used to mearge all the SNPs for each country, comibining the metadata, and assigning category to each sample to the four sources (human, bovine,swine,poultry)for downstream analysis
 
