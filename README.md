@@ -18,6 +18,11 @@ Salmonella enterica is a pathogen that can be transmitted from animals to humans
 ## Objectives
 1. Develop machine learning models to predict the source of Salmonella Enterica  based on whole genome sequencing data
 2. Identify SNPs determinants associated with source attributions.
+## Data
+The data that was used in this study was obtained from ![NCBI isolate brower database](https://www.ncbi.nlm.nih.gov/pathogens/isolates#). The dataset used in the study is in ![accessions folder](http://34.29.100.237/user/onyangob/tree/my_shared_data_folder/salmonellaml/salmonellaml/accessions)
+
+
+
 
 ## Methods
 
