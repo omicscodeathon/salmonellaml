@@ -29,6 +29,7 @@ The data that was used in this study was obtained from ![NCBI isolate brower dat
 ![workflow](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/workflow.png)
 
 ## Results
+![results](https://github.com/omicscodeathon/salmonellaml/blob/main/output/dendrogram_accessions.png)
 ![results](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/Model%20Performance_ROC_Evaluation.png)
 ![results](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/ROCLightGBM.png)
 ![results](https://github.com/omicscodeathon/salmonellaml/blob/main/figures/precision_Recall.png)
